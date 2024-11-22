@@ -11,7 +11,7 @@ def Elec_Power(V, I, PF):
 
 # Streamlit UI
 st.title('2305A21L43-PS2')
-st.title("This application is useful for calculating the active power(p),reactive power(Q) and apparent power(s) based on input parameters such as voltage,current,and poer factor
+st.title("This application is useful for calculating the active power(p),reactive power(Q) and apparent power(s) based on input parameters such as voltage,current,and poer factor")
 # Input fields for voltage, current, and power factor
 V = st.number_input('Enter Voltage (V) in Volts:', min_value=100.0, step=1.0)
 I = st.number_input('Enter Current (I) in Amps:', min_value=10.0, step=1.0)
