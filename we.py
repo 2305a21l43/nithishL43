@@ -1,28 +1,28 @@
 import streamlit as st
-P=0
-Q=0
-S=0
+import math
 
+# Define the Elec_Power function
 def Elec_Power(V, I, PF):
-    P = V * I * PF
-    Q = V * I * ((1 - PF*2) * 0.5)
+    phi = math.acos(PF)
+    P = V * I * math.cos(phi)
+    Q = V * I * math.sin(phi)
     S = V * I
     return P, Q, S
 
-st.title("2305a21l43-PS2")
-st.write("this application is useful for calculating the active power(p),reactive power(q) and apparent power(s) based on input parameters such as voltage,current,and poer factor")
+# Streamlit UI
+st.title('2305A21L19-PS2')
 
-col=st.columns(2)
-with col[0]:
-    V = st.number_input("Input Voltage (V):", min_value=0.0, value=0.0)
-    I = st.number_input("Input Current (I):", min_value=0.0, value=0.0)
-    PF = st.number_input("Power Factor (PF):", min_value=0.0, max_value=1.0, value=0.0)
-    if st.button("Compute"):
-         P, Q, S = Elec_Power(V, I, PF)
+# Input fields for voltage, current, and power factor
+V = st.number_input('Enter Voltage (V) in Volts:', min_value=100.0, step=1.0)
+I = st.number_input('Enter Current (I) in Amps:', min_value=10.0, step=1.0)
+PF = st.number_input('Enter Power Factor (PF):', min_value=0.90, max_value=1.0, step=0.01)
 
-with col[1]:
-   
+# Calculate and display results
+if V > 0 and I > 0 and PF >= 0 and PF <= 1:
+    P, Q, S = Elec_Power(V, I, PF)
     
-    st.write("Active Power (P):", P,"W")
-    st.write("Reactive Power (Q):", Q," VARs")
-    st.write("Apparent Power (S):" ,S ,"VA")
+    st.write(f'Active Power (P): {P:.2f} Watts')
+    st.write(f'Reactive Power (Q): {Q:.2f} VARs')
+    st.write(f'Apparent Power (S): {S:.2f} VA')
+else:
+    st.write('Please enter valid input values for voltage, current, and power factor.')
