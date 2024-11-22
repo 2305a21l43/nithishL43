@@ -23,6 +23,6 @@ if V > 0 and I > 0 and PF >= 0 and PF <= 1:
     
     st.write(f'Active Power (P): {P:.2f} kWatts')
     st.write(f'Reactive Power (Q): {Q:.2f} kVARs')
-    st.write(f'Apparent Power (S): {S:.2f} VA')
+    st.write(f'Apparent Power (S): {S:.2f} kVA')
 else:
     st.write('Please enter valid input values for voltage, current, and power factor.')
